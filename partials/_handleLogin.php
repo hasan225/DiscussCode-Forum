@@ -19,6 +19,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             }
             header("location:/forum/index.php");
             }
+          header("location:/forum/index.php");
         }
 
 

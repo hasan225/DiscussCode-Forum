@@ -66,13 +66,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         <input class="form-control me-2 rounded" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-success rounded" type="submit">Search</button>
                        <p class="mb-0 text-white mx-2 text-center">welcome ' . $_SESSION['user_email'] . '</p> 
-                       <button class="btn btn-outline-warning rounded ms-2 px-3" data-bs-toggle="modal" data-bs-target="#loginModal">Logout</button>
+                       <a href="partials/_logout.php" class="btn btn-outline-warning rounded ms-2 px-3">Logout</a>
              </form>';
 } else {
     echo '     <form class="d-flex">
                         <input class="form-control me-2 rounded" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-success rounded" type="submit">Search</button>
-                       <h5 class="">welcome hossain</h5> 
                 </form>
                     <button class="btn btn-outline-warning rounded ms-2 px-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                     <button class="btn btn-outline-info rounded mx-2" data-bs-toggle="modal" data-bs-target="#signupModal">SignUp</button>';
