@@ -11,8 +11,15 @@
     }
 
     p.mb-0.text-white.mx-2.text-center {
-        width: 150%;
+        width: 165%;
         margin-top: 5px;
+        font-family: cursive;
+        color: #34efff !important;
+        box-shadow: inset 3px -1px 37px -8px #00ffff;
+        border-radius: 10px;
+        padding: 0px 4px;
+        letter-spacing: 0.3px;
+        text-shadow: 3px 7px 14px black;
     }
 </style>
 <?php
@@ -37,7 +44,7 @@ echo '
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="about.php">About</a>
                     </li>
 
                     <li class="nav-item dropdown">

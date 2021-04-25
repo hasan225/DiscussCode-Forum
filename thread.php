@@ -23,6 +23,10 @@
             border-radius: 11px;
             letter-spacing: 3px;
         }
+
+        p.lead.display-0 {
+            font-family: emoji;
+        }
     </style>
 </head>
 
@@ -51,7 +55,8 @@
     if ($method == 'POST') {
         //insert comment into db
         $comment = $_POST['comment'];
-        $sql = "INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ('$comment', '$id', '0', current_timestamp());";
+        $sno =$_POST['sno'];
+        $sql = "INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ('$comment', '$id', '$sno', current_timestamp());";
         $result = mysqli_query($conn, $sql);
         $showalert = true;
         if ($showalert) {
@@ -88,19 +93,31 @@
     </div>
 
 
-    <div class="container mt-5">
+    <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        echo '    <div class="container mt-5">
         <h1 class="text-capitalize my-3">Answer The Question</h1>
-        <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
+        <form action="' . $_SERVER['REQUEST_URI'] . '" method="post">
 
             <div class="mb-3">
                 <label for="desc" class="form-label">Your Comment</label>
                 <textarea class="form-control" id="comment" name="comment" col="30" rows="2"></textarea>
+                <input type="hidden" name="sno" value="'.$_SESSION["sno"].'">
             </div>
-
 
             <button type="submit" class="btn btn-success btn-lg">Post Comment</button>
         </form>
     </div>
+
+';
+    } else {
+        echo '
+         <div class="container">
+            <p class="lead display-0">You Are Not logged in. Please Log In To Share Your Knowledge</p>
+         </div>
+    ';
+    }
+    ?>
 
 
     <div class="container mt-5">
@@ -116,15 +133,19 @@
             $id = $row['comment_id'];
             $content = $row['comment_content'];
             $comment_time = $row['comment_time'];
+            $thread_user_id = $row['comment_by'];
+            $sql2 = "SELECT `user_email` FROM `users` WHERE sno='$thread_user_id'";
+            $result2 = mysqli_query($conn, $sql2);
+            $row2 = mysqli_fetch_assoc($result2);
 
 
 
             echo '<div class="d-flex my-4">
             <div class="flex-shrink-0">
-                <img src="img/user.png" width="40px" alt="userpng">
+                <img src="img/user-6.png" width="40px" alt="userpng">
             </div>
             <div class="flex-grow-1 ms-3">
-            <p class="font-weight-bold my-0">Unknown User</p>
+            <p class="font-weight-bold my-0">' . $row2['user_email'] . '</p>
                 <p class="text-capitalize mb-1 ">' . $content . '</p>
                 <p class="mb-3 p-0 "style="font-size:12px">was posted at ' . $comment_time . '</p>
             </div>

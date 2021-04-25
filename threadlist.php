@@ -40,13 +40,13 @@
         }
 
         h1.py-2 {
-            margin: 20px auto;
+            margin: 24px auto;
             text-align: center;
             background: antiquewhite;
             border-radius: 10px;
             letter-spacing: 2px;
             font-family: cursive;
-            width: 800px;
+
         }
 
         .lead {
@@ -82,6 +82,18 @@
             height: 40px;
             border-radius: 50%;
         }
+
+        p.lead.display-4 {
+            font-family: auto;
+            font-size: 17px;
+            margin-bottom: 36px;
+            box-shadow: inset 0px 3px 32px 0px darkgrey;
+            padding: 8px;
+            width: 555px;
+            text-align: center;
+            border-radius: 10px;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 
@@ -110,7 +122,8 @@
         //insert thread into db
         $th_title = $_POST['title'];
         $th_desc = $_POST['desc'];
-        $sql = "INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '0', current_timestamp())";
+        $sno = $_POST['sno'];
+        $sql = "INSERT INTO `threads` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$th_title', '$th_desc', '$id', '$sno', current_timestamp())";
         $result = mysqli_query($conn, $sql);
         $showalert = true;
         if ($showalert) {
@@ -151,9 +164,10 @@
 
     </div>
 
-
-    <div class="container mt-5">
-        <form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post">
+    <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        echo '<div class="container mt-5">
+        <form action=" ' . $_SERVER['REQUEST_URI'] . '" method="post">
             <h1 class="text-capitalize text-center my-5">Ask About Your Concerns</h1>
 
             <div class="mb-3">
@@ -164,19 +178,27 @@
 
             <div class="mb-3">
                 <label for="desc" class="form-label">Elaborate Your Issue</label>
+                  <input type="hidden" name="sno" value="' . $_SESSION["sno"] . '">
                 <textarea class="form-control" id="desc" name="desc" col="30" rows="3"></textarea>
             </div>
 
 
             <button type="submit" class="btn btn-success btn-lg">Submit</button>
         </form>
-    </div>
-
+    </div>';
+    } else {
+        echo '
+         <div class="container">
+            <p class="lead display-4">You Are Not logged in. Please Log In To Start A Discussion</p>
+         </div>
+    ';
+    }
+    ?>
 
 
 
     <div class="container">
-        <h1 class="py-2">Browse Questions</h1>
+        <h1 class="py-2">Share Your problems To Solve IT With The Help Of Experts</h1>
 
         <?php
         $id = $_GET['catid'];
@@ -189,15 +211,21 @@
             $title = $row['thread_title'];
             $desc = $row['thread_desc'];
             $thread_time = $row['timestamp'];
+            $thread_user_id =$row['thread_user_id'];
+            $sql2= "SELECT `user_email` FROM `users` WHERE sno='$thread_user_id'";
+            $result2=mysqli_query($conn,$sql2);
+            $row2=mysqli_fetch_assoc($result2);
+           
 
 
 
             echo '<div class="d-flex my-4">
             <div class="flex-shrink-0">
-                <img class="rounded-circles" src="https://source.unsplash.com/200x100/?email,user" width="60px" alt="userpng">
+                <img class="rounded-circles" src="https://source.unsplash.com/200x100/?code,programming" width="60px" alt="userpng">
             </div>
             <div class="flex-grow-1 ms-3">
-                <h5 ><a class="text-dark text-decoration-none" href="thread.php?threadid=' . $id . '">' . $title . '</a></h5>
+                 <h5>' . $row2['user_email'] . '</h5>
+                <h6 ><a class="text-dark text-decoration-none" href="thread.php?threadid=' . $id  . '">' . $title . '</a></h6>
                 <p class="text-capitalize mb-1">' . $desc . '</p>
                 <p class="mb-3 p-0 "style="font-size:12px">was posted at ' . $thread_time . '</p>
             </div>
