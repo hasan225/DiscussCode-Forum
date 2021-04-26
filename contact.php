@@ -13,12 +13,12 @@
 </head>
 
 <body>
-
+    <?php include 'partials/_dbconnect.php'; ?>
     <?php include 'partials/_header.php'; ?>
+    <?php include 'partials/_footer.php'; ?>
 
 
 
-    <?php include 'partials/_footer.php' ?>
 
 
     <!-- Optional JavaScript; choose one of the two! -->

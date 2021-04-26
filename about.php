@@ -26,7 +26,7 @@
         .container-xl,
         .container-xxl {
             max-width: 1500px;
-            margin-bottom: 280px;
+
         }
 
         p {
@@ -36,27 +36,54 @@
             letter-spacing: 1px;
             word-spacing: 7px;
         }
+
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+            position: fixed;
+            top: 0px;
+            width: 100%;
+        }
+
+        .row.position {
+            margin-top: 82px;
+        }
+
+        p.text-center.mb-0.p-4 {
+            position: absolute;
+            bottom: -12px;
+            left: 0px;
+            background: black;
+            width: 100%;
+        }
     </style>
 </head>
 
-<body>
-    <?php include 'partials/_header.php'; ?>
 
+
+<body>
+    <?php include 'partials/_dbconnect.php'; ?>
     <div class=" container-fluid">
-        <div class="row ">
-            <div class="col-12 col-md-6 col-lg-6  ">
+        <div class="row position">
+            <div class="col-12 col-md-12 col-lg-6  ">
                 <img src="img/about.jpg" alt="userpng">
             </div>
 
-            <div class="d-flex justify-content-center align-items-start flex-column col-12 col-md-6 col-lg-6 contentsec p-3 about-sec ml-lg-4">
+            <div class="d-flex justify-content-center align-items-start flex-column col-12 col-md-12 col-lg-6 contentsec p-3 about-sec ml-lg-4">
                 <h2>Our Journey</h2>
                 <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ducimus, delectus quibusdam necessitatibus voluptates consequuntur qui nostrum aliquam aspernatur, error cupiditate aliquid laborum consequatur blanditiis recusandae accusamus esse autem atque culpa facere. Ea cum illo accusantium, atque dolores hic ullam. Dolores corrupti error eaque aliquid corporis suscipit quod necessitatibus maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti illo totam reprehenderit similique veniam libero repellat nam inventore velit perspiciatis fuga, fugit facilis, quis vitae consectetur doloremque et excepturi nesciunt, soluta architecto ducimus recusandae eligendi. Voluptates quos eligendi inventore nostrum assumenda similique minima blanditiis eius voluptatum impedit, nam ratione? optio velit, quidem accusamus corporis incidunt nemo, dolor earum nobis aspernatur temporibus id facilis animi excepturi eius voluptate odit totam corrupti dolores ex modi culpa. Aperiam harum animi commodi iusto earum cumque quibusdam eius, porro eos debitis sequi iure voluptas qui aut nesciunt dignissimos obcaecati. Perspiciatis nobis sit cum, fugit id tenetur necessitatibus magni unde nisi accusantium, aut ut incidunt ducimus cupiditate sed quo culpa excepturi?</p>
                 <button type="button" class="btn btn-primary buttonplace" data-bs-toggle="tooltip" data-bs-placement="right" title="Hello There">Click To See More</button>
             </div>
         </div>
-    </div>
+    </div>;
+    <?php include 'partials/_footer.php'; ?>;
+    <?php include 'partials/_header.php'; ?>;
 
-    <?php include 'partials/_footer.php' ?>
+
+
+
+
+
+
+
 
 
     <!-- Optional JavaScript; choose one of the two! -->

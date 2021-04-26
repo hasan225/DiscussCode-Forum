@@ -44,17 +44,25 @@ echo '
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a class="nav-link" href="http://localhost/forum/about.php">About</a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Catagories
+                        Top Catagories
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">';
+
+                          $sql= "SELECT category_name, category_id FROM `categories` LIMIT 3";
+                          $result=mysqli_query($conn,$sql);
+                          while($row=mysqli_fetch_assoc($result)){
+                        echo ' <li><a class="dropdown-item" href="threadlist.php?catid='. $row['category_id'].'">'.$row['category_name'].'</a></li>';         
+                          }
+            
+                        
+
+
+        echo '                    <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>

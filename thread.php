@@ -32,8 +32,8 @@
 
 <body>
 
-    <?php include 'partials/_header.php'; ?>
     <?php include 'partials/_dbconnect.php'; ?>
+    <?php include 'partials/_header.php'; ?>
 
     <?php
     $id = $_GET['threadid'];
@@ -43,6 +43,13 @@
 
         $title = $row['thread_title'];
         $desc = $row['thread_desc'];
+
+        $thread_user_id = $row['thread_user_id'];
+        //query the users table to find out the name of orginial poster
+        $sql2 = "SELECT `user_email` FROM `users` WHERE sno='$thread_user_id'";
+        $result2 = mysqli_query($conn, $sql2);
+        $row2 = mysqli_fetch_assoc($result2);
+        $posted_by = $row2['user_email'];
     }
 
     ?>
@@ -55,6 +62,8 @@
     if ($method == 'POST') {
         //insert comment into db
         $comment = $_POST['comment'];
+        $comment = str_replace("<","&lt;",$comment);
+        $comment = str_replace(">","&gt;",$comment);
         $sno =$_POST['sno'];
         $sql = "INSERT INTO `comments` (`comment_content`, `thread_id`, `comment_by`, `comment_time`) VALUES ('$comment', '$id', '$sno', current_timestamp());";
         $result = mysqli_query($conn, $sql);
@@ -87,7 +96,7 @@
             <h2 class="text-capitalize my-2 text-center">this forum is to share knowledge with everyone</h2>
             <h1 class="my-3">Rules</h1>
             <p class=" mb-3"> No Spam / Advertising / Self-promote in the forums is not allowed. Do not post copyright-infringing material. Do not post “offensive” posts, links or images. Do not cross post questions. Remain respectful of other members at all times.</p>
-            <p>posted by <b>hossain</b></p>
+            <p>posted by <b><?php echo $posted_by;?></b></p>
         </div>
 
     </div>
@@ -133,6 +142,7 @@
             $id = $row['comment_id'];
             $content = $row['comment_content'];
             $comment_time = $row['comment_time'];
+
             $thread_user_id = $row['comment_by'];
             $sql2 = "SELECT `user_email` FROM `users` WHERE sno='$thread_user_id'";
             $result2 = mysqli_query($conn, $sql2);
