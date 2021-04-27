@@ -27,6 +27,23 @@
             width: auto;
             height: 175px;
         }
+
+        body {
+            margin: 0;
+            font-family: var(--bs-font-sans-serif);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            background: #1a1a1d;
+        }
+
+        .card:hover{transform:scale(1.1);
+                    transition: .4s;
+                  
+        }
     </style>
 </head>
 
@@ -101,7 +118,7 @@
                     <div class="card-body my-3">
                         <h5 class="card-title"><a href="/threadlist.php?catid=' . $id . '">' . $cat . '</a></h5>
                         <p class="card-text text-justify">' . substr($desc, 0, 90) . '....</p>
-                        <a href="threadlist.php?catid=' . $id . '" class="btn btn-primary">See More</a>
+                        <a class="card-link stretched-link text-capitalize coloring" href="threadlist.php?catid=' . $id . '" class="btn btn-primary">See More</a>
                     </div>
                 </div>
             </div>  ';

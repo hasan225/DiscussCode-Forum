@@ -21,7 +21,7 @@
         letter-spacing: 0.3px;
         text-shadow: 3px 7px 14px black;
     }
-</style>
+    </style>
 <?php
 session_start();
 
@@ -53,7 +53,7 @@ echo '
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">';
 
-                          $sql= "SELECT category_name, category_id FROM `categories` LIMIT 3";
+                          $sql= "SELECT category_name, category_id FROM `categories` LIMIT 10";
                           $result=mysqli_query($conn,$sql);
                           while($row=mysqli_fetch_assoc($result)){
                         echo ' <li><a class="dropdown-item" href="threadlist.php?catid='. $row['category_id'].'">'.$row['category_name'].'</a></li>';         
@@ -77,8 +77,8 @@ echo '
 
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
-    echo '   <form class="d-flex">
-                        <input class="form-control me-2 rounded" type="search" placeholder="Search" aria-label="Search">
+    echo '   <form action="search.php" method="get" class="d-flex">
+                        <input class="form-control me-2 rounded" name="search" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-success rounded" type="submit">Search</button>
                        <p class="mb-0 text-white mx-2 text-center">welcome ' . $_SESSION['user_email'] . '</p> 
                        <a href="partials/_logout.php" class="btn btn-outline-warning rounded ms-2 px-3">Logout</a>

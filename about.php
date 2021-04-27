@@ -37,22 +37,12 @@
             word-spacing: 7px;
         }
 
-        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark {
-            position: fixed;
-            top: 0px;
-            width: 100%;
+        body {
+            background: #056b3c;
         }
 
-        .row.position {
-            margin-top: 82px;
-        }
-
-        p.text-center.mb-0.p-4 {
-            position: absolute;
-            bottom: -12px;
-            left: 0px;
-            background: black;
-            width: 100%;
+        .container-fluid.mainbody {
+            color: white;
         }
     </style>
 </head>
@@ -61,7 +51,8 @@
 
 <body>
     <?php include 'partials/_dbconnect.php'; ?>
-    <div class=" container-fluid">
+    <?php include 'partials/_header.php'; ?>;
+    <div class=" container-fluid mainbody">
         <div class="row position">
             <div class="col-12 col-md-12 col-lg-6  ">
                 <img src="img/about.jpg" alt="userpng">
@@ -69,13 +60,12 @@
 
             <div class="d-flex justify-content-center align-items-start flex-column col-12 col-md-12 col-lg-6 contentsec p-3 about-sec ml-lg-4">
                 <h2>Our Journey</h2>
-                <p class="">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ducimus, delectus quibusdam necessitatibus voluptates consequuntur qui nostrum aliquam aspernatur, error cupiditate aliquid laborum consequatur blanditiis recusandae accusamus esse autem atque culpa facere. Ea cum illo accusantium, atque dolores hic ullam. Dolores corrupti error eaque aliquid corporis suscipit quod necessitatibus maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti illo totam reprehenderit similique veniam libero repellat nam inventore velit perspiciatis fuga, fugit facilis, quis vitae consectetur doloremque et excepturi nesciunt, soluta architecto ducimus recusandae eligendi. Voluptates quos eligendi inventore nostrum assumenda similique minima blanditiis eius voluptatum impedit, nam ratione? optio velit, quidem accusamus corporis incidunt nemo, dolor earum nobis aspernatur temporibus id facilis animi excepturi eius voluptate odit totam corrupti dolores ex modi culpa. Aperiam harum animi commodi iusto earum cumque quibusdam eius, porro eos debitis sequi iure voluptas qui aut nesciunt dignissimos obcaecati. Perspiciatis nobis sit cum, fugit id tenetur necessitatibus magni unde nisi accusantium, aut ut incidunt ducimus cupiditate sed quo culpa excepturi?</p>
+                <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates sequi totam a laborum obcaecati consectetur in corrupti quod incidunt vitae ex temporibus soluta aut velit dolorum, error aperiam rem quae corporis quisquam? Vitae eum delectus est dolorum ipsum modi a esse eius ab excepturi blanditiis, dignissimos perspiciatis omnis ea vero et mollitia sit recusandae dolores natus? Dolores inventore iste aliquam assumenda? Aut corporis beatae, adipisci molestias, dolore quia odit autem, cumque sapiente nam reiciendis illo ab. Repudiandae fugiat eveniet vel qui omnis ut explicabo aspernatur cumque facere recusandae. Velit a aspernatur maxime, enim ipsa perspiciatis corporis distinctio corrupti! Quos quo cum vero saepe doloribus voluptatibus consectetur magni doloremque nihil ducimus nostrum hic porro dolorum fugiat rerum ratione, optio tempora corrupti iure ullam laborum iusto illo! Rem fuga quia similique itaque. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias ducimus, delectus quibusdam necessitatibus voluptates consequuntur qui nostrum aliquam aspernatur, error cupiditate aliquid laborum consequatur blanditiis recusandae accusamus esse autem atque culpa facere. Ea cum illo accusantium, atque dolores hic ullam. Dolores corrupti error eaque aliquid corporis suscipit quod necessitatibus maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam deleniti illo totam reprehenderit similique veniam libero repellat nam inventore velit perspiciatis fuga, fugit facilis, quis vitae consectetur doloremque et excepturi nesciunt, soluta architecto ducimus recusandae eligendi. Voluptates quos eligendi inventore nostrum assumenda similique minima blanditiis eius voluptatum impedit, nam ratione? optio velit, quidem accusamus corporis incidunt nemo, dolor earum nobis aspernatur temporibus id facilis animi excepturi eius voluptate odit totam corrupti dolores ex modi culpa. Aperiam harum animi commodi iusto earum cumque quibusdam eius, porro eos debitis sequi iure voluptas qui aut nesciunt dignissimos obcaecati. Perspiciatis nobis sit cum, fugit id tenetur necessitatibus magni unde nisi accusantium, aut ut incidunt ducimus cupiditate sed quo culpa excepturi?</p>
                 <button type="button" class="btn btn-primary buttonplace" data-bs-toggle="tooltip" data-bs-placement="right" title="Hello There">Click To See More</button>
             </div>
         </div>
-    </div>;
-    <?php include 'partials/_footer.php'; ?>;
-    <?php include 'partials/_header.php'; ?>;
+    </div>
+    <?php include 'partials/_footer.php'; ?>
 
 
 
